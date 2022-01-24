@@ -86,8 +86,6 @@ class CRM_Summary_Form_DateRange extends CRM_Core_Form {
 
     parent::postProcess();
   }
-
-
   /**
    * Get the fields/elements defined in this form.
    *

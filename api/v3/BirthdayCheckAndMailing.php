@@ -17,7 +17,7 @@ function civicrm_api3_birthday_check_and_mailing_get_and_send($params){
                     'messageTemplateID' => 70,
                     'toEmail' => $email,
             ];
-        $smarty = CRM_Core_Smarty::singleton();;
+        $smarty = CRM_Core_Smarty::singleton();
         $smarty->assign('name', $name);
         CRM_Core_BAO_MessageTemplate::sendTemplate($emailParams);
     }
