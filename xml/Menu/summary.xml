@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/filter</path>
+    <page_callback>CRM_Summary_Page_Filter</page_callback>
+    <title>Filter</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/daterange</path>
+    <page_callback>CRM_Summary_Form_DateRange</page_callback>
+    <title>DateRange</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
