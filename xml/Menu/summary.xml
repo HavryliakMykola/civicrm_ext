@@ -12,4 +12,10 @@
     <title>DateRange</title>
     <access_arguments>access CiviCRM</access_arguments>
   </item>
+  <item>
+    <path>civicrm/summarysettings</path>
+    <page_callback>CRM_Summary_Form_SummarySettings</page_callback>
+    <title>Summary Settings</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
 </menu>

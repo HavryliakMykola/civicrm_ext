@@ -18,6 +18,7 @@ class CRM_Summary_Form_DateRange extends CRM_Core_Form {
       ),
     ));
 
+
     $this->add('datepicker', 'start_date', 'Start Date', ['Y-m-d'], false, ['time' => false]);
     $this->add('datepicker', 'end_date', 'End Date', ['Y-m-d'], false, ['time' => false]);
 
@@ -76,16 +77,25 @@ class CRM_Summary_Form_DateRange extends CRM_Core_Form {
         $this->assign('allResults', $entityResult );
         $this->assign('startDate', $values['start_date']);
         $this->assign('endDate', $values['end_date']);
+        $default_search_email = Civi::settings()->get('email_address2');
+        $default_tpl_id_search = Civi::settings()->get('template_id2');
+
+        $currentContactID = CRM_Core_Session::getLoggedInContactID();
+        $contactDetails = CRM_Contact_BAO_Contact_Location::getEmailDetails($currentContactID);
+        $userEmail = $contactDetails['1'];
         $emailParams = [
-            'messageTemplateID' => 69,
+            'messageTemplateID' => $default_tpl_id_search,
             'tplParams' => $entityResult,
-            'toEmail' => 'mykolaaasdasd@mail.com',
+            'toEmail' => $userEmail,
+            'from' => $default_search_email,
+            'subject' => 'Filter results'
         ];
 
         CRM_Core_BAO_MessageTemplate::sendTemplate($emailParams);
-
     parent::postProcess();
   }
+
+
   /**
    * Get the fields/elements defined in this form.
    *

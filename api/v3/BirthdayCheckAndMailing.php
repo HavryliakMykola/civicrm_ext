@@ -12,12 +12,16 @@ function civicrm_api3_birthday_check_and_mailing_get_and_send($params){
     while ($dao->fetch()) {
         $all_contact[$dao->display_name] = $dao->email;
     }
+    $default_tpl_id_bd = Civi::settings()->get('template_id1');
+    $default_bd_email = Civi::settings()->get('email_address');
     foreach ($all_contact as $name => $email){
         $emailParams = [
-                    'messageTemplateID' => 70,
-                    'toEmail' => $email,
-            ];
-        $smarty = CRM_Core_Smarty::singleton();
+            'messageTemplateID' => $default_tpl_id_bd,
+            'toEmail' => $email,
+            'from' => $default_bd_email,
+            'subject' => 'Happy Birthday!!!'
+        ];
+        $smarty = CRM_Core_Smarty::singleton();;
         $smarty->assign('name', $name);
         CRM_Core_BAO_MessageTemplate::sendTemplate($emailParams);
     }

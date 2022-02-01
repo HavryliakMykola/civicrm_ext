@@ -163,4 +163,11 @@ function summary_civicrm_navigationMenu(&$menu) {
     'permission' => 'access CiviCRM',
   ]);
   _summary_civix_navigationMenu($menu);
+    _summary_civix_insert_navigation_menu($menu, 'Administer', [
+        'label' => E::ts('Summary Settings'),
+        'name' => 'SummarySettings',
+        'url' => 'civicrm/summarysettings',
+        'permission' => 'access CiviCRM',
+    ]);
+  _summary_civix_navigationMenu($menu);
 }
